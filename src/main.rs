@@ -13,8 +13,8 @@ use esp_hal::{
     time::{Duration, Instant},
 };
 
-use esp_println as _;
 use defmt::info;
+use esp_println as _;
 
 // use rgb_led::{RGB8, WS2812RMT};
 
