@@ -1,0 +1,3 @@
+[rustdio]
+wifi_ssid = "MyWifiName"
+wifi_psk = "SuperSecretPawsword"

@@ -6,18 +6,12 @@ version      = "0.1.0"
 
 [[bin]]
 name = "rustdio"
-path = "./src/bin/main.rs"
+harness = false # do not use the built in cargo test harness -> resolve rust-analyzer errors
+# path = "./src/bin/main.rs"
 
 [dependencies]
-defmt = "1.0.1"
-esp-bootloader-esp-idf = { version = "0.2.0", features = ["esp32s3"] }
-esp-hal = { version = "=1.0.0-rc.0", features = [
-  "defmt",
-  "esp32s3",
-  "unstable",
-] }
-
 critical-section = "1.2.0"
+defmt = "1.0.1"
 esp-alloc = { version = "0.8.0", features = ["defmt"] }
 esp-backtrace = { version = "0.17.0", features = [
   "defmt",
@@ -25,7 +19,17 @@ esp-backtrace = { version = "0.17.0", features = [
   "exception-handler",
   "panic-handler",
 ] }
+esp-bootloader-esp-idf = { version = "0.2.0", features = ["esp32s3"] }
+esp-hal = { version = "=1.0.0-rc.0", features = [
+  "defmt",
+  "esp32s3",
+  "unstable",
+] }
 esp-println = { version = "0.15.0", features = ["defmt-espflash", "esp32s3"] }
+toml-cfg = "0.2.0"
+
+# rgb-led = { path = "lib/rgb-led" }
+# wifi = { path = "lib/wifi" }
 
 
 [profile.dev]
