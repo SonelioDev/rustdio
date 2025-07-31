@@ -16,7 +16,7 @@ use esp_hal::{
 use defmt::{info, warn};
 use esp_println as _;
 
-// use rgb_led::{RGB8, WS2812RMT};
+use rgb_led::{RGB8, WS2812RMT};
 
 extern crate alloc;
 
@@ -44,17 +44,17 @@ fn main() -> ! {
     let app_config: Config = CONFIG;
     warn!("app_config:{:#?}", app_config);
     
-    // info!("Pre led");
-    // // Wrap the led in an Arc<Mutex<...>>
-    // let led = Arc::new(Mutex::new(WS2812RMT::new(
-    //     peripherals.pins.gpio8,
-    //     peripherals.rmt.channel0,
-    // )?));
-    // {
-    //     let mut led = led.lock().unwrap();
-    //     led.set_pixel(RGB8::new(50, 0, 0))?;
-    // }
-    // info!("Post led");
+    info!("Pre led");
+    // Wrap the led in an Arc<Mutex<...>>
+    let led = Arc::new(Mutex::new(WS2812RMT::new(
+        peripherals.pins.gpio8,
+        peripherals.rmt.channel0,
+    )?));
+    {
+        let mut led = led.lock().unwrap();
+        led.set_pixel(RGB8::new(50, 0, 0))?;
+    }
+    info!("Post led");
 
     loop {
         info!("Hello world from Sonelio!");

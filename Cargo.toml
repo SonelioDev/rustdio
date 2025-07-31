@@ -28,7 +28,7 @@ esp-hal = { version = "=1.0.0-rc.0", features = [
 esp-println = { version = "0.15.0", features = ["defmt-espflash", "esp32s3"] }
 toml-cfg = "0.2.0"
 
-# rgb-led = { path = "lib/rgb-led" }
+rgb-led = { path = "lib/rgb-led" }
 # wifi = { path = "lib/wifi" }
 
 
