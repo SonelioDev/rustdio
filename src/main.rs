@@ -13,14 +13,14 @@ use esp_hal::{
     time::{Duration, Instant},
 };
 
-use defmt::info;
+use defmt::{info, warn};
 use esp_println as _;
 
 // use rgb_led::{RGB8, WS2812RMT};
 
 extern crate alloc;
 
-#[derive(Debug)]
+#[derive(Debug, defmt::Format)]
 #[toml_cfg::toml_config]
 pub struct Config {
     #[default("")]
@@ -41,6 +41,9 @@ fn main() -> ! {
 
     esp_alloc::heap_allocator!(size: 64 * 1024);
 
+    let app_config: Config = CONFIG;
+    warn!("app_config:{:#?}", app_config);
+    
     // info!("Pre led");
     // // Wrap the led in an Arc<Mutex<...>>
     // let led = Arc::new(Mutex::new(WS2812RMT::new(
